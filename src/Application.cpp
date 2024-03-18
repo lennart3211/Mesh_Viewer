@@ -1,4 +1,4 @@
-#include "Application.h"
+#include "../include/Application.h"
 
 
 namespace mesh_viewer {
@@ -35,6 +35,10 @@ namespace mesh_viewer {
         m_IndexBuffer = new IndexBuffer(m_Indices, 6);
 
         glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.125f, 1.125f, -1.0f, 1.0f);
+        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(-1, 0, 0));
+        glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(1, 1, 0));
+
+        glm::mat4 mvp = proj * view * model;
 
         m_Shader = new Shader("../resource/shader/shader.vert", "../resource/shader/shader.frag");
         m_Shader->bind();
@@ -42,12 +46,12 @@ namespace mesh_viewer {
         m_Shader->setUniform4f("u_Color", {1.0f, 0.5f, 1.0f, 1.0f});
         m_Shader->setUniform2f("u_ScreenDimensions", {float(width), float(height)});
 
-        m_Shader->setUniformMat4f("u_MVP", proj);
+        m_Shader->setUniformMat4f("u_MVP", mvp);
 
-
-//        m_Shader->setUniform3f("u_SpherePosition", Vec3(0, 0, 1));
+//
+//        m_Shader->setUniform3f("u_SpherePosition", glm::vec3(0, 0, 1));
 //        m_Shader->setUniform1f("u_SphereRadius", 0.2f);
-//        m_Shader->setUniform3f("u_LightDirection", Vec3(0.5, 1, -0.5));
+//        m_Shader->setUniform3f("u_LightDirection", glm::vec3(0.5, 1, -0.5));
 
         m_Texture = new Texture("../resource/texture/image.png");
         m_Texture->bind(0);
@@ -86,20 +90,28 @@ namespace mesh_viewer {
     void Application::run() {
         float g = 0.0f;
         float increment = 0.001f;
+        int i_increment = 1;
+        int i = 0;
+        float offset = 0;
         while (!glfwWindowShouldClose(window)) {
             GLCall(glClear(GL_COLOR_BUFFER_BIT));
 
             Renderer::draw(m_VertexArray, m_IndexBuffer, m_Shader);
             m_Shader->bind();
-            glUniform4f(0, g, 0.5f, 1.0f, 1.0f);
+                glUniform4f(0, g, 1.0f, 1.0f, 1.0f);
+
 
             if (g > 1.0f) {
                 increment = -0.001f;
             }
             if (g < 0.0f) {
                 increment = 0.001f;
+
             }
             g += increment;
+
+//            m_Shader->setUniformMat4f("u_MVP", glm::translate(glm::mat4(1.0f), glm::vec3(offset, 0, 0)));
+            offset -= increment;
 
             GLCall(glfwSwapBuffers(window));
             GLCall(glfwPollEvents());

@@ -1,9 +1,9 @@
 #pragma once
 
 #define GLEW_STATIC
-#include <GL/glew.h>
-#include <iostream>
+#include "GL/glew.h"
 #include <cassert>
+#include <iostream>
 
 #define GLCall(x) glClearError(); x; assert(glCheckError())
 

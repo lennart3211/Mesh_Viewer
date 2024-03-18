@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <vector>
 #define GLEW_STATIC
-#include <GL/glew.h>
+#include "GL/glew.h"
 #include <cassert>
 
 namespace mesh_viewer {

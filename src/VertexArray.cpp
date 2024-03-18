@@ -1,4 +1,4 @@
-#include "VertexArray.h"
+#include "../include/VertexArray.h"
 #include <GL/glew.h>
 
 namespace mesh_viewer {

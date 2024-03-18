@@ -1,0 +1,13 @@
+
+cmake-build-release/CMakeFiles/3.26.4/CompilerIdC/CMakeCCompilerId.c
+*.exe
+*.cmake
+*.log
+*.dll
+cmake-build-release/CMakeFiles/TargetDirectories.txt
+*.ninja
+*.yaml
+*.obj
+cmake-build-release/.ninja_log
+/cmake-build-debug
+/cmake-build-release

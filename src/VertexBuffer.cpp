@@ -1,5 +1,5 @@
-#include "VertexBuffer.h"
-#include "Renderer.h"
+#include "../include/VertexBuffer.h"
+#include "../include/Renderer.h"
 
 
 namespace mesh_viewer {

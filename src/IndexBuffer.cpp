@@ -1,5 +1,5 @@
-#include "IndexBuffer.h"
-#include "Renderer.h"
+#include "../include/IndexBuffer.h"
+#include "../include/Renderer.h"
 
 namespace mesh_viewer {
     IndexBuffer::IndexBuffer(const uint32_t *data, uint32_t count) : m_Count(count) {

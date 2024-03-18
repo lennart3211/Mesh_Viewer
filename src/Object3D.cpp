@@ -1,4 +1,4 @@
-#include "Object3D.h"
+#include "../include/Object3D.h"
 #include <cstdlib>
 
 namespace mesh_viewer {

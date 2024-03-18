@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Error.h"
-#include "VertexArray.h"
 #include "IndexBuffer.h"
 #include "Shader.h"
+#include "VertexArray.h"
 
 namespace mesh_viewer {
     class Renderer {

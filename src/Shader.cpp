@@ -1,5 +1,5 @@
-#include "Shader.h"
-#include "Error.h"
+#include "../include/Shader.h"
+#include "../include/Error.h"
 
 #include <GL/glew.h>
 #include <fstream>
@@ -92,15 +92,15 @@ namespace mesh_viewer {
         return content;
     }
 
-    void Shader::setUniform4f(const std::string &name, const Vec4 &v) {
+    void Shader::setUniform4f(const std::string &name, const glm::vec4 &v) {
         GLCall(glUniform4f(getUniformLocation(name), v.x, v.y, v.z, v.w));
     }
 
-    void Shader::setUniform3f(const std::string &name, const Vec3 &v) {
+    void Shader::setUniform3f(const std::string &name, const glm::vec3 &v) {
         GLCall(glUniform3f(getUniformLocation(name), v.x, v.y, v.z));
     }
 
-    void Shader::setUniform2f(const std::string &name, const Vec2 &v) {
+    void Shader::setUniform2f(const std::string &name, const glm::vec2 &v) {
         GLCall(glUniform2f(getUniformLocation(name), v.x, v.y));
     }
 
@@ -112,11 +112,11 @@ namespace mesh_viewer {
         GLCall(glUniform1i(getUniformLocation(name), v));
     }
 
-    void Shader::setUniform4f(uint32_t location, const Vec4 &v) {
+    void Shader::setUniform4f(uint32_t location, const glm::vec4 &v) {
         GLCall(glUniform4f(location, v.x, v.y, v.z, v.w));
     }
 
-    void Shader::setUniform2f(uint32_t location, const Vec2 &v) {
+    void Shader::setUniform2f(uint32_t location, const glm::vec2 &v) {
         GLCall(glUniform2f(location, v.x, v.y));
     }
 
